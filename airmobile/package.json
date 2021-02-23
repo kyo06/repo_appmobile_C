@@ -48,7 +48,7 @@
   },
   "crcf": [
     "cssmodules",
-    "functionnal",
+    "functional",
     "uppercase",
     {
       "output": "src/Components"

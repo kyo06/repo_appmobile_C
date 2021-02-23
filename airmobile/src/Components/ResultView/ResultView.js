@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 
-class ResultView extends Component {
-  render() {
-    return <div>ResultView</div>;
-  }
-}
+const ResultView = () => {
+  
+  return <div>ResultView</div>;
+};
 
 export default ResultView;
