@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import css from "./MainView.module.css";
-import NavBar from "Components/Navigation";
-import Search from "Components/SearchView";
+import NavBar from "../Navigation";
+import Search from "../SearchView";
+import { Container } from 'react-bootstrap';
 
 class MainView extends Component {
   render() {
     return (
-    <div className={css.container}>
-       <h1> Air Mobile</h1>
+    <Container> 
+      <h1> Air Mobile</h1>
        <NavBar />
         <Search />
-        
-    </div>
+    </Container>
+      
+
+
     );
   }
 }

@@ -1,12 +1,13 @@
 .container{
-    width:auto;
+    width:100%;
     display:flex;
     flex-direction: row;
-    margin: 2em;
-    padding: 2em;
-    background-color: aqua;
+    margin: auto;
+    padding:1em;
+   
     align-items: center;
     align-content: center;
+    font-size:2rem;
     
 }
 
