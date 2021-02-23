@@ -1,0 +1,21 @@
+.container{
+    width:auto;
+    display:flex;
+    flex-direction: row;
+    margin: 2em;
+    padding: 2em;
+    background-color: aqua;
+    align-items: center;
+    align-content: center;
+    
+}
+
+.avion {
+    flex: 2;
+    text-align: center;
+}
+
+.profile{
+    flex: 1;
+    text-align: center;
+}
