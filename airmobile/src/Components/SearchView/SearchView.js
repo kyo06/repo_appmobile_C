@@ -1,15 +1,23 @@
-import React from "react";
+import React,  {useState}from "react";
 import css from "./SearchView.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends, faChild } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Form, FormGroup, FormLabel, FormControl, FormCheck, Button,} from 'react-bootstrap';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const SearchView =() => {
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
     console.log("pwet");
+  
   };
+
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  
+  
 
     
       return(
@@ -30,21 +38,21 @@ const SearchView =() => {
          
           <Row>
             <Col>
-            <FormGroup>
-                <FormLabel>Date Aller</FormLabel>
-                  <FormControl type="date" id="start" name="trip-start"
-                value="2021-02-23"
-                min="2021-02-23" max="2021-12-31" />
-            </FormGroup></Col>
-            <Col>  <FormGroup>
-                <FormLabel>Date Retour</FormLabel>
-                <FormControl type="date" id="end" name="trip-end"
-                value="2021-02-23"
-                min="2021-02-23" max="2021-12-31" />
-            </FormGroup></Col>
+              <FormGroup>
+                  <FormLabel>Date Aller</FormLabel>
+                    <DatePicker selected={startDate} select={startDate} onChange={date => setStartDate(date)} />       
+              </FormGroup>
+            </Col>
+            <Col>  
+              <FormGroup>
+                  <FormLabel>Date Retour</FormLabel>
+                  <DatePicker selected={endDate} select={startDate} onChange={date => setEndDate(date)} />       
+              </FormGroup>
+            </Col>
           </Row>
 
-            <FormLabel>Pour combien de personnes?</FormLabel>
+          <FormLabel>Pour combien de personnes?</FormLabel>
+
             <Row>
               <Col>
               <FormGroup>
