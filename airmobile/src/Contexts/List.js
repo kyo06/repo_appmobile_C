@@ -1,7 +1,6 @@
 import { createContext, useState } from "react";
 
 
-
 const defaultList = [];
 const List = createContext();
 

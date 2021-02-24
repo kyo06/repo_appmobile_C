@@ -1,24 +1,28 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import NavBar from "../Navigation";
 import Search from "../SearchView";
 import { Container } from 'react-bootstrap';
 import ResultView from "../ResultView";
 import css from "./MainView.module.css";
+import List from "../../Contexts/List";
 
-class MainView extends Component {
-  render() {
+const MainView = () => {
+
+  const {list, setList} = useContext(List);
+  const searchFlight = (form)=>{
+    setList([...list, form]);
+  }
+
+
+  
     return (
     <Container className={css.container}> 
        <NavBar />
-
-       <ResultView />
-       
-        <Search />
-
+       <ResultView  />
     </Container>
 
     );
-  }
+  
 }
 
 export default MainView;
