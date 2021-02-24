@@ -1,30 +1,19 @@
 export const listReservation = [
     {
         id: "",
-        departAero: "Maurice MRU", 
-        arrivalAero: "Lyon LYS",
-        dateAller: "22/04/2021",
-        dateRetour: "28/04/2021", 
-        prix: 120,
-        status: "En cours"
+        departAero: "Lyon LYS", 
+        departTime:"10:00",
+        departDate:"30/03/2021",
+        arrivalAero: "Île Maurice MRU",
+        arrivalTime:"20:00",
+        arrivalDate:" 30/03/2021",
+
+        prix:"1500",
+
+        nbEnfants:"0",
+        nbAdultes:"2",
+ 
     },    
-    {
-        id: "",
-        departAero: "Maurice MRU", 
-        arrivalAero: "Lyon LYS",
-        dateAller: "",
-        dateRetour: "", 
-        prix: 120,
-        status: "Annuler"
-    },    
-    {
-        id: "",
-        departAero: "Maurice MRU", 
-        arrivalAero: "Lyon LYS",
-        dateAller: "",
-        dateRetour: "", 
-        prix: 150,
-        status: "Terminer"
-    },    
+    
 
 ];

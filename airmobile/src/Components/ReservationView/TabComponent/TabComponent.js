@@ -1,31 +1,23 @@
 import React from "react";
+import { Tabs, Tab, FormGroup, Form, Button } from 'react-bootstrap';
+import css from "./TabComponent.module.css";
+import CardCompo from "../CardComponent";
 
-const TabComponent = () => {
-  return(
-  <> <form onSubmit={handleSubmit}>
-  <Tabs defaultActiveKey="aller" transition={false} id="tab">
-       
-    <Tab eventKey="aller" title="Aller">
-       <FormGroup   onChange={handleChange} name="aller">
-          { allerList.map((v) => (<List vol={v} key={v.id} name="aller" />))}
-       </FormGroup>
-    </Tab>
-    <Tab eventKey="retour" title="Retour">
-      <Form.Control as="select"  htmlSize={allerList.length} onChange={handleChange} name="retour">
-            { retourList.map((v) => (<List vol={v} key={v.id} name="retour" />))}
-      </Form.Control>
-    </Tab>
-      
-      <Tab eventKey="selection" title="Selection" >            
-         <h4>Resultat</h4>
-          {select ? select.aller + select.retour : ""},
-          <Button>Payer</Button>
-      </Tab>
-      
-  </Tabs>
-  </form>
- </>
-  )
+const TabComponent = ({name, vol}) => {
+  return (<>
+    {
+    name === "aller" ?  
+      <div className={css.green}>
+            <CardCompo vol={vol} />
+      </div> 
+      :
+      <div className={css.orange}>
+            <CardCompo vol={vol} />
+      </div>
+      }
+     
+  </>
+  );
 };
 
 export default TabComponent;

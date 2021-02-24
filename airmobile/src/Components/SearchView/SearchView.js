@@ -3,8 +3,6 @@ import css from "./SearchView.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends, faChild, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Form, FormGroup, FormLabel, FormControl, FormCheck, Button,} from 'react-bootstrap';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import {listAeroport} from "../../utils/listAeroports";
 
 const SearchView =() => {
@@ -46,7 +44,7 @@ const SearchView =() => {
  
 
     
-      return(
+    return(
       <>
         <Form onSubmit={handleSubmit} >
           <FormGroup>
@@ -78,7 +76,6 @@ const SearchView =() => {
                   <input type="date" select={date} onChange={ handleChange} name="retourDate"/>       
                   </FormGroup>
               </FormGroup>
-            
           </Form.Row>
 
           <FormLabel>Pour combien de personnes?</FormLabel>
@@ -103,7 +100,8 @@ const SearchView =() => {
           <Button variant="success"type="submit">Rechercher</Button>
 
         </Form>
-      </>);
+      </>
+    );
  };
 
 

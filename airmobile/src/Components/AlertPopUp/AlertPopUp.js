@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 
-class AlertPopUp extends Component {
-  render() {
-    return <div>AlertPopUp</div>;
-  }
-}
+const AlertPopUp = () => {
+  return ( <>
+        <h3>Je suis un pop Up</h3>
+  
+  </>);
+};
 
 export default AlertPopUp;
