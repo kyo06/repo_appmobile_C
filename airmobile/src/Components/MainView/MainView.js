@@ -3,6 +3,7 @@ import NavBar from "../Navigation";
 import Search from "../SearchView";
 import { Container } from 'react-bootstrap';
 import ResultView from "../ResultView";
+import CdvComponent from "../CdvComponent";
 import ReservationView from "../ReservationView";
 import css from "./MainView.module.css";
 import List from "../../Contexts/List";
@@ -15,12 +16,13 @@ const MainView = () => {
 
   
     return (
-    <Container className={css.container}> 
+    <div className={css.body}>
+    <Container className={css.body}> 
        <NavBar />
-       <ReservationView />
-       
+       <ResultView />
+      <CdvComponent />
     </Container>
-
+</div>
     );
   
 }

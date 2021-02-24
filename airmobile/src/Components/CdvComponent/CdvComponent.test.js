@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
-import TabComponent from "./TabComponent";
+import CdvComponent from "./CdvComponent";
 
-describe("TabComponent", () => {
+describe("CdvComponent", () => {
   test("matches snapshot", () => {
-    const wrapper = shallow(<TabComponent />);
+    const wrapper = shallow(<CdvComponent />);
     expect(wrapper).toMatchSnapshot();
   });
 });

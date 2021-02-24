@@ -4,13 +4,15 @@
     flex-direction: row;
     margin: auto;
     padding:1em;
-   
     align-items: center;
     align-content: center;
     font-size:2rem;
     
 }
 
+.spacer{
+     margin-bottom: 20px;
+}
 .avion {
     flex: 2;
     text-align: center;

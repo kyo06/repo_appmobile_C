@@ -1,35 +1,33 @@
 import React from "react";
+import css from "./RadioCardComponent.module.css";
+import { Button, Card, Row, Col, Form, Label } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends, faChild, faPlaneDeparture, faPlaneArrival } from '@fortawesome/free-solid-svg-icons';
-import css from "./CardComponent.module.css";
-import { Button, Card, Row, Col } from 'react-bootstrap';
 
-const CardComponent = ({vol}) => {
-
-
-
-
-  return (
-  <>
-    <Card className={css.card}>
+const RadioCardComponent = ({vol, name}) => {
+  return (<>
+  
+  <Card className={css.card}>
       <Card.Header> {vol.dateAller}</Card.Header>
       <Card.Body>
         <Row>
           <Col>
-           <h4> <FontAwesomeIcon icon={faPlaneDeparture}/>{vol.departAero }</h4>
+           <h4><FontAwesomeIcon icon={faPlaneDeparture}/>{vol.departAero }</h4>
            <p>Date de Départ: {vol.departDate}</p>
            <p>Heure locale de décollage estimé: {vol.departTime }</p>
           </Col>  
           <Col className={css.icon}>
-     
+        
           </Col>
+
           <Col>
           <h4><FontAwesomeIcon  icon={faPlaneArrival}/>{vol.arrivalAero}</h4>
           <p> Date d'arriver: {vol.arrivalDate}</p>
           <p>Heure locale d'atterissage estimé: {vol.arrivalTime}</p>
           
           </Col>
-         <Button variant="success"> {vol.prix} €</Button>
+      
+         <Col> Prix: {vol.prix} €</Col>
         </Row>
       </Card.Body>
       <Card.Footer>
@@ -40,4 +38,4 @@ const CardComponent = ({vol}) => {
   );
 };
 
-export default CardComponent;
+export default RadioCardComponent;

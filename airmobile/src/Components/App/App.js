@@ -1,13 +1,14 @@
-
-import './App.css';
+import css from './App.css';
 import MainView from './../MainView';
 import ContextProvider from '../../Contexts';
 
 function App() {
   return (
-    <ContextProvider>
+    
+    <ContextProvider className={css.bg} >
       <MainView />
     </ContextProvider>
+    
   );
 }
 

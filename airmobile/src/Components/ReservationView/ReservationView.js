@@ -2,8 +2,9 @@ import React, {useState, useContext } from "react";
 import {Card, Button, Nav} from 'react-bootstrap';
 import {listReservation} from "../../utils/listReservation";
 import List from "../../Contexts/List"
-import TabCompo from "./TabComponent";
-import CardCompo from "./CardComponent";
+
+import CardComponent from "./CardComponent";
+import css from "./ReservationView.module.css";
 
 
 const ReservationView =() => {
@@ -16,17 +17,21 @@ const ReservationView =() => {
 
        {/** Cadre pour les info d'une reservation btn annuler  */} 
        {
-         resList.map((v) => <TabCompo vol={v} name="aller"  />)
+         resList.map((v) => 
+          <div className={css.green}>
+            <CardComponent vol={v} />
+          </div>
+       )
        }
 
        {
-         resList.map((v) => <TabCompo  vol={v} name="retour" />)
+         resList.map((v) => 
+            <div className={css.orange}>
+                <CardComponent vol={v} />
+            </div>
+              )
        }
-       
-       
-       
-       
-    
+
     </>;
   
 }

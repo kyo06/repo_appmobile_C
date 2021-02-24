@@ -7,7 +7,7 @@ import { Navbar, Nav} from 'react-bootstrap';
 class Navigation extends Component {
   render() {
     return (
-      <Navbar bg="light" expand="lg">
+      <Navbar className={css.spacer} bg="light" expand="lg">
           <Navbar.Brand href="#home">Air Mobile</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

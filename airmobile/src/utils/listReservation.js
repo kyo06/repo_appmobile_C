@@ -7,9 +7,7 @@ export const listReservation = [
         arrivalAero: "Île Maurice MRU",
         arrivalTime:"20:00",
         arrivalDate:" 30/03/2021",
-
         prix:"1500",
-
         nbEnfants:"0",
         nbAdultes:"2",
  
