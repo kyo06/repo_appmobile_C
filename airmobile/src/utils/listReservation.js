@@ -1,4 +1,4 @@
-const listReservation = [
+export const listReservation = [
     {
         id: "",
         departAero: "Maurice MRU", 
@@ -6,6 +6,7 @@ const listReservation = [
         dateAller: "22/04/2021",
         dateRetour: "28/04/2021", 
         prix: 120,
+        status: "En cours"
     },    
     {
         id: "",
@@ -14,6 +15,7 @@ const listReservation = [
         dateAller: "",
         dateRetour: "", 
         prix: 120,
+        status: "Annuler"
     },    
     {
         id: "",
@@ -22,6 +24,7 @@ const listReservation = [
         dateAller: "",
         dateRetour: "", 
         prix: 150,
+        status: "Terminer"
     },    
 
 ];

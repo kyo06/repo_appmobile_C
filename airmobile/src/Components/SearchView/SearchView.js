@@ -1,10 +1,11 @@
 import React,  {useState}from "react";
 import css from "./SearchView.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserFriends, faChild } from '@fortawesome/free-solid-svg-icons';
+import { faUserFriends, faChild, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Form, FormGroup, FormLabel, FormControl, FormCheck, Button,} from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import {listAeroport} from "../../utils/listAeroports";
 
 const SearchView =() => {
 
@@ -17,62 +18,67 @@ const SearchView =() => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   
-  
+  /** Aeroport   */
+  const aeroports = listAeroport.map((i) => (
+    <option value={i.id}>{i.NomAeroport} - {i.CodeIATA} - {i.Pays}</option> 
+  ));
+ 
 
     
       return(
       <>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} methods="">
           <FormGroup>
             <FormLabel>Aéroport de Départ</FormLabel>
-            <FormControl
-              name="title"
-            />
+            <Form.Control as="select">
+                {aeroports},
+            </Form.Control>
           </FormGroup>
           <FormGroup>
             <FormLabel>Aéroport de Départ</FormLabel>
-            <FormControl
-              name="title"
-            />
+            <Form.Control as="select">
+                {aeroports},
+            </Form.Control>
           </FormGroup>
          
-          <Row>
-            <Col>
-              <FormGroup>
-                  <FormLabel>Date Aller</FormLabel>
-                    <DatePicker selected={startDate} select={startDate} onChange={date => setStartDate(date)} />       
+          <Form.Row>
+              <FormGroup as={Col}>
+                  <FormLabel>Date Aller </FormLabel>
+                  <FormGroup className={css.datepiker}>
+                  <DatePicker selected={startDate} select={startDate} onChange={date => setStartDate(date)} />
+                  <FontAwesomeIcon icon={faCalendarAlt} /> 
+                  </FormGroup>      
               </FormGroup>
-            </Col>
-            <Col>  
-              <FormGroup>
+
+              <FormGroup as={Col}>
                   <FormLabel>Date Retour</FormLabel>
-                  <DatePicker selected={endDate} select={startDate} onChange={date => setEndDate(date)} />       
+                  <FormGroup className={css.datepiker}>
+                  <DatePicker className={css.datepikerDatePicker} selected={endDate} select={startDate} onChange={date => setEndDate(date)} />       
+                  <FontAwesomeIcon className={css.datepikerFontAwesomeIcon} icon={faCalendarAlt} />
+                  </FormGroup>
               </FormGroup>
-            </Col>
-          </Row>
+            
+          </Form.Row>
 
           <FormLabel>Pour combien de personnes?</FormLabel>
 
-            <Row>
-              <Col>
-              <FormGroup>
-              <FontAwesomeIcon icon={faUserFriends} />
-                <FormControl type="number" />
+            <Form.Row className={css.center}>
+            <FormGroup as={Col}>
+                <FontAwesomeIcon  icon={faUserFriends} /> Adulte
+                <Form.Control  type="number" min="0"/>
+            </FormGroup>  
+            <FormGroup as={Col}>
+                <FontAwesomeIcon  icon={faChild} /> Enfants -16ans
+                <FormControl  type="number" min="0" />
                 </FormGroup>
-              </Col>
-
-              <Col>
-              <FormGroup>
-              <FontAwesomeIcon icon={faChild} />
-                <FormControl type="number" />
-            </FormGroup> </Col>  
-            </Row>
+            </Form.Row>
+            
           
           <FormGroup controlId="formBasicCheckbox">
             <FormCheck type="checkbox" label="Vol Direct" />
           </FormGroup>
           
-         
+         {/* Au click on envoie a ResultView */}
           <Button variant="success"type="submit">Rechercher</Button>
 
         </Form>

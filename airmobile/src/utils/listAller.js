@@ -1,4 +1,4 @@
-const listAller =[
+export const listAller =[
     {
       id: 1,
       departAero: "Lyon LYS", 
