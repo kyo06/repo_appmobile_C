@@ -18,6 +18,7 @@ const MainView = () => {
     return (
     <Container className={css.container}> 
        <NavBar />
+       <Search />
        <ResultView  />
     </Container>
 

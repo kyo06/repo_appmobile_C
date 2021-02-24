@@ -24,7 +24,7 @@ const SearchView =({add}) => {
   const handleSubmit = (e) => {
     e.preventDefault(); 
     console.log(form);
-    add(form);
+    localStorage.setItem("user", JSON.stringify(form));
     setForm(initialForm);
   };
 

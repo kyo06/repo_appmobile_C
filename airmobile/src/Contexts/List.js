@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 
 
-const defaultList = [];
+const defaultList = JSON.parse(localStorage.getItem("choix"));
 const List = createContext();
 
 export const ListProvider = ({ children }) => {
