@@ -1,14 +1,26 @@
 import React from "react";
-import { ToggleButton} from 'react-bootstrap';
+import {} from 'react-bootstrap';
 
-const List = ({vol}) => {
+
+const List = ({vol, name}) => {
       
-  return (<>
-      <ToggleButton value={2}>Radio 2</ToggleButton>
-      <ToggleButton>
-        {vol.departAero} - {vol.arrivalAero} - {vol.prix} - {vol.dateAller} - {vol.dateRetour}
-      </ToggleButton>
-  </>);
+  return (
+     <>
+  <label>
+    <input type="radio" name={name} class="card-input-element" />
+  <div class="panel panel-default card-input">
+    <div class="panel-heading">{vol.departAero}</div>
+    <div class="panel-body">
+      {vol.arrivalAero} - {vol.prix} - {vol.dateAller} - {vol.dateRetour}
+    </div>
+  </div>
+  </label>
+    
+  
+
+   </>  
+  );
 };
 
 export default List;
+

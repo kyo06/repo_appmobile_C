@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {listAeroport} from "../../utils/listAeroports";
 
-const SearchView =({add}) => {
+const SearchView =() => {
 
   const initialForm = {
       departAero: "", 
@@ -24,7 +24,7 @@ const SearchView =({add}) => {
   const handleSubmit = (e) => {
     e.preventDefault(); 
     console.log(form);
-    localStorage.setItem("user", JSON.stringify(form));
+    localStorage.setItem("choix", JSON.stringify(form));
     setForm(initialForm);
   };
 
@@ -34,11 +34,10 @@ const SearchView =({add}) => {
     setForm({...form, [name] : value });
     console.log(name, value);
     
-     
   };
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [date, setDate] = useState(new Date());
+ 
   
   /** Aeroport   */
   const aeroports = listAeroport.map((i) => (
@@ -53,12 +52,14 @@ const SearchView =({add}) => {
           <FormGroup>
             <FormLabel>Aéroport de Départ</FormLabel>
             <Form.Control as="select" onChange={handleChange} name="departAero">
+            <option></option> 
                 {aeroports},
             </Form.Control>
           </FormGroup>
           <FormGroup>
             <FormLabel>Aéroport de Départ</FormLabel>
-            <Form.Control as="select"  onChange={handleChange} name="arrivalAero">
+            <Form.Control as="select" select={date}  onChange={handleChange} name="arrivalAero">
+            <option></option> 
                 {aeroports},
             </Form.Control>
           </FormGroup>
@@ -67,16 +68,14 @@ const SearchView =({add}) => {
               <FormGroup as={Col}>
                   <FormLabel>Date Aller </FormLabel>
                   <FormGroup className={css.datepiker}>
-                  <DatePicker selected={startDate} select={startDate} onChange={date => setStartDate(date) + handleChange} name="departDate"/>       
-                  <FontAwesomeIcon icon={faCalendarAlt} /> 
+                  <input type="date" onChange={ handleChange} name="departDate"/>       
                   </FormGroup>      
               </FormGroup>
 
               <FormGroup as={Col}>
                   <FormLabel>Date Retour</FormLabel>
                   <FormGroup className={css.datepiker}>
-                  <DatePicker className={css.datepikerDatePicker} selected={endDate} select={startDate} onChange={date => setEndDate(date) + handleChange} name="retourDate"/>       
-                  <FontAwesomeIcon className={css.datepikerFontAwesomeIcon} icon={faCalendarAlt} />
+                  <input type="date" select={date} onChange={ handleChange} name="retourDate"/>       
                   </FormGroup>
               </FormGroup>
             
