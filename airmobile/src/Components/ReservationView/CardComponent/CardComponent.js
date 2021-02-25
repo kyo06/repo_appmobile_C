@@ -4,36 +4,42 @@ import { faUserFriends, faChild, faPlaneDeparture, faPlaneArrival } from '@forta
 import css from "./CardComponent.module.css";
 import { Button, Card, Row, Col } from 'react-bootstrap';
 
-const CardComponent = ({vol}) => {
+const CardComponent = ({rech,choix, name}) => {
 
-
+  const prixTotal =()=> {
+    const nbEnfants = rech.nbEnfants;
+    const nbAdultes = rech.nbAdultes;
+    const prixBillet = choix.prix;
+    const calcul= (nbEnfants*prixBillet) + (nbAdultes*prixBillet)
+    return calcul;
+  }
 
 
   return (
   <>
     <Card className={css.card}>
-      <Card.Header> {vol.dateAller}</Card.Header>
+      <Card.Header> {rech.dateAller}</Card.Header>
       <Card.Body>
         <Row>
           <Col>
-           <h4> <FontAwesomeIcon icon={faPlaneDeparture}/>{vol.departAero }</h4>
-           <p>Date de Départ: {vol.departDate}</p>
-           <p>Heure locale de décollage estimé: {vol.departTime }</p>
+           <h4> <FontAwesomeIcon icon={faPlaneDeparture}/>{(name === "aller") ? <>{rech.departAero}</> : <>{rech.arrivalAero}</>}</h4>
+           <p>Date de Départ: {rech.departDate}</p>
+           <p>Heure locale de décollage estimé: {choix.departTime }</p>
           </Col>  
           <Col className={css.icon}>
      
           </Col>
           <Col>
-          <h4><FontAwesomeIcon  icon={faPlaneArrival}/>{vol.arrivalAero}</h4>
-          <p> Date d'arriver: {vol.arrivalDate}</p>
-          <p>Heure locale d'atterissage estimé: {vol.arrivalTime}</p>
+          <h4><FontAwesomeIcon  icon={faPlaneArrival}/>{(name === "aller") ? <>{rech.departAero}</> : <>{rech.arrivalAero}</>}</h4>
+          <p> Date d'arriver: {rech.arrivalDate}</p>
+          <p>Heure locale d'atterissage estimé: {choix.arrivalTime}</p>
           
           </Col>
-         <Button variant="success"> {vol.prix} €</Button>
+         <Button variant="success"> {prixTotal()} €</Button>
         </Row>
       </Card.Body>
       <Card.Footer>
-          <FontAwesomeIcon  icon={faChild}/> {vol.nbEnfants} Enfants -  <FontAwesomeIcon  icon={faUserFriends}/> {vol.nbAdultes} Adultes
+          <FontAwesomeIcon  icon={faChild}/> {rech.nbEnfants} Enfants -  <FontAwesomeIcon  icon={faUserFriends}/> {rech.nbAdultes} Adultes
         </Card.Footer>
     </Card>
   </>

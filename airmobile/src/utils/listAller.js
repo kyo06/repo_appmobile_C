@@ -1,26 +1,27 @@
 export const listAller =[
     {
-      id: 1,
-      departAero: "Lyon LYS", 
-      arrivalAero: "Maurice MRU", 
-      prix: 120,
+      id: "1",
+      departTime:"08:00",
+      arrivalTime:"20:00",
+      prix:"150",
     },
     {
-      id: 2,
-      departAero: "Nice", 
-      arrivalAero: "Lyon LYS", 
-      prix: 120,
+      id: "2",
+      departTime:"12:00",
+      arrivalTime:"22:00",
+      prix:"350",
     },
     {
-      id:3,
-      departAero: "Nice", 
-      arrivalAero: "Lyon LYS", 
-      prix: 120,
+      id: "3",
+      departTime:"13:00",
+      arrivalTime:"23:00",
+      prix:"450",
     },
     {
-      id: 4,
-      departAero: "Lyon", 
-      arrivalAero: "Nancy", 
-      prix: 120,
+      id: "4",
+      departTime:"16:00",
+      arrivalTime:"20:00",
+      prix:"50",
     },
+   
   ];

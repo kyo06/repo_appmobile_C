@@ -1,4 +1,4 @@
-import React,  {useState}from "react";
+import React,  {useState, Link}from "react";
 import css from "./SearchView.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends, faChild, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
@@ -22,8 +22,9 @@ const SearchView =() => {
   const handleSubmit = (e) => {
     e.preventDefault(); 
     console.log(form);
-    localStorage.setItem("choix", JSON.stringify(form));
+    localStorage.setItem("recherche", JSON.stringify(form));
     setForm(initialForm);
+    
   };
 
   const handleChange = (e) => {
@@ -35,18 +36,16 @@ const SearchView =() => {
   };
 
   const [date, setDate] = useState(new Date());
- 
+
   
   /** Aeroport   */
   const aeroports = listAeroport.map((i) => (
-    <option value={i.id}>{i.NomAeroport} - {i.CodeIATA} - {i.Pays}</option> 
+    <option value={`${i.NomAeroport}`+` ${i.CodeIATA}`}>{i.NomAeroport} - {i.CodeIATA} - {i.Pays}</option> 
   ));
- 
-
     
     return(
       <>
-        <Form onSubmit={handleSubmit} >
+        <Form  onSubmit={handleSubmit} >
           <FormGroup>
             <FormLabel>Aéroport de Départ</FormLabel>
             <Form.Control as="select" onChange={handleChange} name="departAero">
@@ -55,8 +54,8 @@ const SearchView =() => {
             </Form.Control>
           </FormGroup>
           <FormGroup>
-            <FormLabel>Aéroport de Départ</FormLabel>
-            <Form.Control as="select" select={date}  onChange={handleChange} name="arrivalAero">
+            <FormLabel>Aéroport d'Arrivée</FormLabel>
+            <Form.Control as="select" select={date.toUTCString}  onChange={handleChange} name="arrivalAero">
             <option></option> 
                 {aeroports},
             </Form.Control>
@@ -97,7 +96,7 @@ const SearchView =() => {
           </FormGroup>
           
          {/* Au click on envoie a ResultView */}
-          <Button variant="success"type="submit">Rechercher</Button>
+          <Button variant="success" type="submit">Rechercher</Button>
 
         </Form>
       </>

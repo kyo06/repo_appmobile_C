@@ -11,18 +11,23 @@ import RadioCardComponent from "./RadioCardComponent";
 
 const ResultView = () => {
 const selection = {
-    aller: "",
-    retour: "",
+    departTime: "0",
+    prixAller: "0",
+    arrivalTime: "0",
+    prixRetour: "0",
+  
     isPayed: "false",
   };
 
   const [select, setSelect] = useState(selection);
 
+
+  const rechercheItem = JSON.parse(localStorage.getItem("recherche"));
+
   const handleSubmit = (e) => {
     e.preventDefault(); 
     console.log(select);
-  
-   
+    localStorage.setItem("choix", JSON.stringify(select)) 
   };
 
   const handleChange = (e) => {
@@ -44,15 +49,23 @@ const selection = {
     <Tabs defaultActiveKey="aller" transition={false} id="tab">
          
       <Tab eventKey="aller" title="Aller">
-        <h3>Voyage Aller</h3>
-         <Form.Group name="aller" onSubmit={handleSubmit}>
-            { allerList.map((v) => (<div className={css.green}><RadioCardComponent vol={v} key={v.id} name="aller" /></div>))}
+        <h3>Voyage Aller</h3> 
+         <Form.Group name="aller" onChange={handleChange}>
+            { allerList.map((v) => (
+              <div className={css.green}>
+                <RadioCardComponent vol={v} key={v.id} name="aller" />
+              </div>))
+            }
         </Form.Group>
        </Tab>
       <Tab eventKey="retour" title="Retour">
       <h3>Voyage Retour</h3>
-      <Form.Group name="retour" onSubmit={handleSubmit}>
-              { retourList.map((v) => (<div className={css.orange}><RadioCardComponent vol={v} key={v.id} name="retour" /></div>))}
+      <Form.Group name="retour" onChange={handleChange}>
+              { retourList.map((v) => (
+                <div className={css.orange}>
+                  <RadioCardComponent vol={v} key={v.id} name="retour" />
+                </div>))
+              }
         </Form.Group>
       </Tab>
         

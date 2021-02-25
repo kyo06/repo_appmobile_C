@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends, faChild, faPlaneDeparture, faPlaneArrival } from '@fortawesome/free-solid-svg-icons';
 
 const RadioCardComponent = ({vol, name}) => {
+
+  const rechercheItem = JSON.parse(localStorage.getItem("recherche"));
+  
   return (<>
   
   <Card className={css.card}>
@@ -12,8 +15,9 @@ const RadioCardComponent = ({vol, name}) => {
       <Card.Body>
         <Row>
           <Col>
-           <h4><FontAwesomeIcon icon={faPlaneDeparture}/>{vol.departAero }</h4>
-           <p>Date de Départ: {vol.departDate}</p>
+          
+           <h4><FontAwesomeIcon icon={faPlaneDeparture}/>{(name === "aller") ? <>{rechercheItem.departAero}</> : <>{rechercheItem.arrivalAero}</>}</h4>
+           <p>Date de Départ: {rechercheItem.departDate}</p>
            <p>Heure locale de décollage estimé: {vol.departTime }</p>
           </Col>  
           <Col className={css.icon}>
@@ -21,8 +25,8 @@ const RadioCardComponent = ({vol, name}) => {
           </Col>
 
           <Col>
-          <h4><FontAwesomeIcon  icon={faPlaneArrival}/>{vol.arrivalAero}</h4>
-          <p> Date d'arriver: {vol.arrivalDate}</p>
+          <h4><FontAwesomeIcon  icon={faPlaneArrival}/>{(name === "aller") ? <>{rechercheItem.arrivalAero}</> : <>{rechercheItem.departAero}</>}</h4>
+          <p> Date d'arriver: {rechercheItem.arrivalDate}</p>
           <p>Heure locale d'atterissage estimé: {vol.arrivalTime}</p>
           
           </Col>
