@@ -1,8 +1,8 @@
-import React,  {useState, Link}from "react";
+import React,  {useState}from "react";
 import css from "./SearchView.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserFriends, faChild, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-import { Col, Row, Form, FormGroup, FormLabel, FormControl, FormCheck, Button,} from 'react-bootstrap';
+import { faUserFriends, faChild } from '@fortawesome/free-solid-svg-icons';
+import { Col, Form, FormGroup, FormLabel, FormControl, FormCheck, Button,} from 'react-bootstrap';
 import {listAeroport} from "../../utils/listAeroports";
 
 const SearchView =() => {
@@ -13,7 +13,7 @@ const SearchView =() => {
       departDate: "",
       retourDate: "",
       nbAdultes: "",
-      nbEnfants: "",
+      nbEnfants: "0",
       direct: false,
   };
 
@@ -29,18 +29,19 @@ const SearchView =() => {
 
   const handleChange = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
     setForm({...form, [name] : value });
     console.log(name, value);
     
   };
 
-  const [date, setDate] = useState(new Date());
+const date = new Date().toLocaleDateString();
+
 
   
   /** Aeroport   */
   const aeroports = listAeroport.map((i) => (
-    <option value={`${i.NomAeroport}`+` ${i.CodeIATA}`}>{i.NomAeroport} - {i.CodeIATA} - {i.Pays}</option> 
+    <option value={`${i.NomAeroport} ${i.CodeIATA}`}>{i.NomAeroport} - {i.CodeIATA} - {i.Pays}</option> 
   ));
     
     return(
@@ -55,7 +56,7 @@ const SearchView =() => {
           </FormGroup>
           <FormGroup>
             <FormLabel>Aéroport d'Arrivée</FormLabel>
-            <Form.Control as="select" select={date.toUTCString}  onChange={handleChange} name="arrivalAero">
+            <Form.Control as="select"  onChange={handleChange} name="arrivalAero">
             <option></option> 
                 {aeroports},
             </Form.Control>
@@ -65,14 +66,14 @@ const SearchView =() => {
               <FormGroup as={Col}>
                   <FormLabel>Date Aller </FormLabel>
                   <FormGroup className={css.datepiker}>
-                  <input type="date" onChange={ handleChange} name="departDate"/>       
+                  <input type="date" min={date} onChange={ handleChange} name="departDate"/>       
                   </FormGroup>      
               </FormGroup>
 
               <FormGroup as={Col}>
                   <FormLabel>Date Retour</FormLabel>
                   <FormGroup className={css.datepiker}>
-                  <input type="date" select={date} onChange={ handleChange} name="retourDate"/>       
+                  <input type="date" min={date} onChange={ handleChange} name="retourDate"/>       
                   </FormGroup>
               </FormGroup>
           </Form.Row>
@@ -92,7 +93,7 @@ const SearchView =() => {
             
           
           <FormGroup controlId="formBasicCheckbox">
-            <FormCheck type="checkbox" label="Vol Direct" name="direct" onChange={handleChange}/>
+            <FormCheck type="checkbox" label="Vol Direct (Nous proposons seulement des vols Directs)" name="direct" onChange={handleChange}/>
           </FormGroup>
           
          {/* Au click on envoie a ResultView */}

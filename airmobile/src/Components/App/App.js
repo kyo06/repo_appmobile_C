@@ -7,6 +7,7 @@ import ResultView from "../ResultView";
 import CdvComponent from "../CdvComponent";
 import ReservationView from "../ReservationView";
 import ProfileView from "../ProfileView";
+import PopUp from "../AlertPopUp";
 import {Route, BrowserRouter as Router} from "react-router-dom";
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/result" component={ResultView} />
           <Route path="/reservation" component={ReservationView} />
           <Route path="/profile" component={ProfileView} />
+          <Route path="/popup" component={PopUp} />
 
       </Router>
 

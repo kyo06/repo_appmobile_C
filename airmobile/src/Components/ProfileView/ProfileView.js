@@ -1,27 +1,70 @@
-import React from "react";
+import React, {useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlaneDeparture, faUser } from '@fortawesome/free-solid-svg-icons';
-import { Card, Image} from 'react-bootstrap';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { Card, Button, ListGroup} from 'react-bootstrap';
+
+import Switch from "react-switch";
 
 const ProfileView = () => {
+
+  
+    const [checkedNotif, setCheckedNotif] = useState(false);
+    const [checkedVibr, setCheckedVibr] = useState(false);
+
+    const handleChange = nextChecked => {
+      setCheckedNotif(nextChecked);
+    };     
+    const handleChangeV = nextChecked => {
+      setCheckedVibr(nextChecked);
+    }; 
+
+ 
+
+
   return (<>
     
-    <Card style={{ width: '18rem' }}>
-      <Card.Header>
-      <Image src="https://d1fmx1rbmqrxrr.cloudfront.net/cnet/optim/i/edit/2019/04/eso1644bsmall__w770.jpg" roundedCircle />
-      </Card.Header>
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the bulk of
-          the card's content.
-        </Card.Text>
-       <Card.Footer>
-
-       </Card.Footer>
-      </Card.Body>
-    </Card>
-  </>)
+            <Card className="text-center">
+              <Card.Header>
+              <FontAwesomeIcon  icon={faUser}/>
+              </Card.Header>
+              <Card.Body>
+                <Card.Title>Voyageur Galactique</Card.Title>
+                <ListGroup>
+                  <ListGroup.Item>
+                    Date de naissance: xx/xx/xx
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    Num Passeport: XXxxxXxxxXxxx
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    Point Bonus: 1000 pts
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    Passeport Covid: Oui
+                  </ListGroup.Item>
+                    <ListGroup.Item>
+                   Notifications<Switch
+                        onChange={handleChange}
+                        checked={checkedNotif}
+                        className="react-switch"
+                      />
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                    Vibrations
+                    <Switch
+                      onChange={handleChangeV}
+                      checked={checkedVibr}
+                      className="react-switch"
+                    />
+                    
+                    </ListGroup.Item>
+                </ListGroup>
+              <Card.Footer>
+                  <Button href="/reservation">Mes Reservations</Button>
+              </Card.Footer>
+              </Card.Body>
+            </Card>
+          </>)
 };
 
 export default ProfileView;

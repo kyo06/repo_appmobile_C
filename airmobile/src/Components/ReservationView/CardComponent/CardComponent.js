@@ -2,45 +2,53 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends, faChild, faPlaneDeparture, faPlaneArrival } from '@fortawesome/free-solid-svg-icons';
 import css from "./CardComponent.module.css";
-import { Button, Card, Row, Col } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 
 const CardComponent = ({rech,choix, name}) => {
 
-  const prixTotal =()=> {
-    const nbEnfants = rech.nbEnfants;
-    const nbAdultes = rech.nbAdultes;
-    const prixBillet = choix.prix;
-    const calcul= (nbEnfants*prixBillet) + (nbAdultes*prixBillet)
-    return calcul;
-  }
-
-
+  
   return (
   <>
     <Card className={css.card}>
-      <Card.Header> {rech.dateAller}</Card.Header>
+      {(name === "aller") ? <>
       <Card.Body>
-        <Row>
           <Col>
-           <h4> <FontAwesomeIcon icon={faPlaneDeparture}/>{(name === "aller") ? <>{rech.departAero}</> : <>{rech.arrivalAero}</>}</h4>
-           <p>Date de Départ: {rech.departDate}</p>
-           <p>Heure locale de décollage estimé: {choix.departTime }</p>
-          </Col>  
-          <Col className={css.icon}>
-     
-          </Col>
-          <Col>
-          <h4><FontAwesomeIcon  icon={faPlaneArrival}/>{(name === "aller") ? <>{rech.departAero}</> : <>{rech.arrivalAero}</>}</h4>
-          <p> Date d'arriver: {rech.arrivalDate}</p>
-          <p>Heure locale d'atterissage estimé: {choix.arrivalTime}</p>
-          
-          </Col>
-         <Button variant="success"> {prixTotal()} €</Button>
-        </Row>
+           
+           
+              <h4> <FontAwesomeIcon icon={faPlaneDeparture}/> {rech.departAero}</h4>
+              <p>Date de Départ: {rech.departDate}</p>
+              <p>Heure locale de décollage estimé: {choix.departTimeAller }</p>
+                <hr />
+                <h4><FontAwesomeIcon  icon={faPlaneArrival}/> {rech.arrivalAero}</h4>
+                <p> Date d'arriver: {rech.departDate}</p>
+                <p>Heure locale d'atterissage estimé: {choix.arrivalTimeAller}</p>
+           
+            </Col>
+        
+        
       </Card.Body>
       <Card.Footer>
-          <FontAwesomeIcon  icon={faChild}/> {rech.nbEnfants} Enfants -  <FontAwesomeIcon  icon={faUserFriends}/> {rech.nbAdultes} Adultes
-        </Card.Footer>
+          <FontAwesomeIcon  icon={faChild}/> {rech.nbEnfants} Enfants -  <FontAwesomeIcon  icon={faUserFriends}/> {rech.nbAdultes} Adultes - Prix du vol : {choix.prixAller} € / Personnes
+        </Card.Footer> 
+            </> :<>
+            <Card.Body>
+            <Col>
+            
+              <h4> <FontAwesomeIcon icon={faPlaneDeparture}/> {rech.arrivalAero}</h4>
+              <p>Date de Départ: {rech.retourDate}</p>  
+              <p>Heure locale de décollage estimé: {choix.departTimeRetour }</p>
+              <hr />
+              <h4><FontAwesomeIcon  icon={faPlaneArrival}/> {rech.departAero}</h4>
+              <p> Date d'arriver: {rech.retourDate}</p>
+              <p>Heure locale d'atterissage estimé: {choix.arrivalTimeRetour}</p>
+
+          </Col>
+
+      </Card.Body>
+      <Card.Footer>
+          <FontAwesomeIcon  icon={faChild}/> {rech.nbEnfants} Enfants -  <FontAwesomeIcon  icon={faUserFriends}/> {rech.nbAdultes} Adultes -  Prix du vol : {choix.prixRetour} € / Personnes
+        </Card.Footer> 
+      </>}
     </Card>
   </>
   );
