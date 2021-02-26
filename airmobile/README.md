@@ -1,5 +1,6 @@
 # Projet ReactJS - Reservation de billet d'avion -
 
+
 ### Installation et importation 
         * React-bootstrap
             => npm install react-bootstrap bootstrap
@@ -36,17 +37,17 @@
 
 
 ### Components/ReservationView - path="/reservation"
-    *  cette vue resume la reservation de biller avec toutes les infos.
+    *  cette vue resume la reservation de billet avec toutes les informations.
     *  permet aussi de pourvoir annuler les billets ce qui va purger les infos dans le localeStorage et renvoyer au formulaire de recherche
 
 
 ### Components/ProfileView - path="/profile"
-    * vue d'ensemble utilisateur avec divers infos et modif setting en vue du portage mobile
-    *  Avec un bouton qui permet d'accédés a la reservation
+    * vue d'ensemble utilisateur avec divers infos et  setting en vue du portage mobile
+    *  Avec un bouton qui permet d'accédés à la reservation
 
 
 ### Components/AlertPopUp - path="/popup"
-    * ecran de confirmation  de paiment et renvoie vers la page de reservation
+    * ecran d'information de confirmation de paiment et renvoie vers la page de reservation
 
 
         

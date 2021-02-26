@@ -34,15 +34,17 @@
 }
 
 .billet{
-    display: flex;
-    flex-direction:column;
+  display: flex;
+  flex-direction:column;
+  flex-grow: 1;
 }
 
 .billetRight{
-  display: flex;
-  flex-direction:column;
-  text-align: right;
+border-left: 1px solid;
+text-align: right;
+flex-grow: 1;
 }
+
 
 
 

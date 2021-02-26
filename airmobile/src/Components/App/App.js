@@ -7,7 +7,7 @@ import ResultView from "../ResultView";
 import CdvComponent from "../CdvComponent";
 import ReservationView from "../ReservationView";
 import ProfileView from "../ProfileView";
-import PopUp from "../AlertPopUp";
+import PopUp from "../ResultView/AlertPopUp";
 import {Route, BrowserRouter as Router} from "react-router-dom";
 
 

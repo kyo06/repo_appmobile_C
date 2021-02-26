@@ -67,7 +67,7 @@ const ResultView = () => {
           <fieldset >
             { allerList.map((v) => (
             <div className={css.green}>
-                <RadioCardComponent vol={v} key={v.id} name="aller" />
+                <RadioCardComponent vol={v} key={v.id} name="aller" list={allerList} />
             </div>
             ))
           }
@@ -80,7 +80,7 @@ const ResultView = () => {
       <fieldset >
               { retourList.map((v) => (
                 <div className={css.orange}>
-                  <RadioCardComponent vol={v} key={v.id} name="retour" />
+                  <RadioCardComponent vol={v} key={v.id} name="retour" list={retourList} />
                 </div>
               ))
               }
@@ -93,17 +93,23 @@ const ResultView = () => {
           <div className={css.blue}>
             <div className={css.label}>
               <div className={css.billet}>
-                <h5><FontAwesomeIcon icon={faPlaneDeparture}/>{rech.departAero}</h5>
-                <p>Date de Départ: {rech.departDate}</p>
-                <h5><FontAwesomeIcon  icon={faPlaneArrival}/>{rech.arrivalAero}</h5>
-                <p> Date d'arriver: {rech.departDate}</p>
+                
+                <div className={css.billetLeft}>
+                  <h5><FontAwesomeIcon icon={faPlaneDeparture}/>{rech.departAero}</h5>
+                  <p>Date de Départ: {rech.departDate}</p>
+                </div>
+
+                <div className={css.billetRight}>
+                  <h5><FontAwesomeIcon  icon={faPlaneArrival}/>{rech.arrivalAero}</h5>
+                  <p> Date d'arriver: {rech.departDate}</p>
+                </div>
+                
                 <div className={css.billetCenter}>
                   <span>Voyageurs</span>
                   <div><FontAwesomeIcon  icon={faChild}/> {rech.nbEnfants} Enfants</div>   
                   <div><FontAwesomeIcon  icon={faUserFriends}/> {rech.nbAdultes} Adultes</div>
                 </div><input type="hidden" name="isPayed" value="true"/>
               </div>
-              
             </div>
           </div>
           <Button type="submit" variant="primary" size="lg" block>Payer</Button>

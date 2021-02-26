@@ -58,7 +58,8 @@ const ReservationView =() => {
                 </div>
           }
 
-        <h3 variant="success">Montant Total de la Reservation {prixTotal()} €</h3>
+        <h3 variant="success">Montant Total de la Reservation:</h3> 
+        <h3>{prixTotal()} €</h3>
         <p>Status du paiment : {allerRetour.isPayed ?
             <>
               <span>En attente de payement</span> <br />
