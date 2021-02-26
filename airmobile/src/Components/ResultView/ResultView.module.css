@@ -9,13 +9,37 @@ width: 100%;
   .label {
       display: flex;
       flex-direction: row;
+      align-items:center;
+      align-content: space-around;
+      vertical-align: middle;
       width: 100%;
       margin: 5px ;
       padding: 5px;
       background-color:white;
       border: solid 1px;
-      border-radius: 5px
+      border-radius: 5px; 
+      
   }
+
+  .billet{
+      display: flex;
+      flex-direction:column;
+      flex-grow: 1;
+  }
+
+  .billetRight{
+    display: flex;
+    flex-direction:column;
+    text-align: right;
+    flex-grow: 1;
+}
+  .billetCenter{
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    flex-grow: 1;
+}
+
 
   
   .cardinputelement {
@@ -48,7 +72,10 @@ width: 100%;
     background-color: orange;
 }
 
+.blue {
+    background-color: rgb(132, 241, 255);
+}
+
 h3{
-    text-align: center;
-    
+    text-align: center; 
 }

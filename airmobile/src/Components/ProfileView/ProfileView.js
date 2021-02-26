@@ -7,7 +7,6 @@ import Switch from "react-switch";
 
 const ProfileView = () => {
 
-  
     const [checkedNotif, setCheckedNotif] = useState(false);
     const [checkedVibr, setCheckedVibr] = useState(false);
 
@@ -17,9 +16,6 @@ const ProfileView = () => {
     const handleChangeV = nextChecked => {
       setCheckedVibr(nextChecked);
     }; 
-
- 
-
 
   return (<>
     
@@ -60,7 +56,7 @@ const ProfileView = () => {
                     </ListGroup.Item>
                 </ListGroup>
               <Card.Footer>
-                  <Button href="/reservation">Mes Reservations</Button>
+                  <Button  href="/reservation">Mes Reservations</Button>
               </Card.Footer>
               </Card.Body>
             </Card>

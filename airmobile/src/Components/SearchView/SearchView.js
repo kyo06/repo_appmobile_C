@@ -4,9 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends, faChild } from '@fortawesome/free-solid-svg-icons';
 import { Col, Form, FormGroup, FormLabel, FormControl, FormCheck, Button,} from 'react-bootstrap';
 import {listAeroport} from "../../utils/listAeroports";
+import { useHistory } from "react-router-dom";
 
 const SearchView =() => {
 
+  // crée un tableau vide
   const initialForm = {
       departAero: "", 
       arrivalAero: "", 
@@ -17,16 +19,30 @@ const SearchView =() => {
       direct: false,
   };
 
+  // permet de modifier les valeurs du tableau avec setForm et useState
   const [form, setForm] = useState(initialForm);
 
+  // Permet d'utiliser le router avec le formulaire 
+  const pathForm = useHistory();
+  
+  /**
+   * évite le rechargement de la page  et
+   * stoque les valeurs du formulaire modifier par la const handleChange
+   * dans un objet JSON dans le navigateur
+   * et remet le formulaire a son initialForm 
+   */
   const handleSubmit = (e) => {
     e.preventDefault(); 
     console.log(form);
     localStorage.setItem("recherche", JSON.stringify(form));
     setForm(initialForm);
-    
+    pathForm.push("/result");
   };
 
+  /**
+   * permet de recuperer les key : value du formulaire
+   * tout en modifiant le formulaire
+   */
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
@@ -35,11 +51,7 @@ const SearchView =() => {
     
   };
 
-const date = new Date().toLocaleDateString();
-
-
-  
-  /** Aeroport   */
+  /** Aeroports initialise la list  => src/utils/listAeroports.js   */
   const aeroports = listAeroport.map((i) => (
     <option value={`${i.NomAeroport} ${i.CodeIATA}`}>{i.NomAeroport} - {i.CodeIATA} - {i.Pays}</option> 
   ));
@@ -66,14 +78,14 @@ const date = new Date().toLocaleDateString();
               <FormGroup as={Col}>
                   <FormLabel>Date Aller </FormLabel>
                   <FormGroup className={css.datepiker}>
-                  <input type="date" min={date} onChange={ handleChange} name="departDate"/>       
+                  <input type="date" onChange={ handleChange} name="departDate"/>       
                   </FormGroup>      
               </FormGroup>
 
               <FormGroup as={Col}>
                   <FormLabel>Date Retour</FormLabel>
                   <FormGroup className={css.datepiker}>
-                  <input type="date" min={date} onChange={ handleChange} name="retourDate"/>       
+                  <input type="date" onChange={ handleChange} name="retourDate"/>       
                   </FormGroup>
               </FormGroup>
           </Form.Row>
@@ -90,13 +102,11 @@ const date = new Date().toLocaleDateString();
                 <FormControl  type="number" min="0" name="nbEnfants" onChange={handleChange}/>
                 </FormGroup>
             </Form.Row>
-            
-          
+
           <FormGroup controlId="formBasicCheckbox">
             <FormCheck type="checkbox" label="Vol Direct (Nous proposons seulement des vols Directs)" name="direct" onChange={handleChange}/>
           </FormGroup>
           
-         {/* Au click on envoie a ResultView */}
           <Button variant="success" type="submit">Rechercher</Button>
 
         </Form>

@@ -2,8 +2,7 @@ h1{
     text-align: center;
 }
 .body{
-    
-    width: 100%;
+    max-width: 500px;
     min-height: 100vh;
 }
 

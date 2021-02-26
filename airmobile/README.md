@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Projet ReactJS - Reservation de billet d'avion -
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Installation et importation 
+        * React-bootstrap
+            => npm install react-bootstrap bootstrap
+            => import { Button } from 'react-bootstrap';
 
-## Available Scripts
+        * fontawsome
+            => npm i --save @fortawesome/fontawesome-svg-core
+            => npm install --save @fortawesome/free-solid-svg-icons
+            => npm install --save @fortawesome/react-fontawesome
+            => import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+            => import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
-In the project directory, you can run:
 
-### `yarn start`
+### Components/App
+        *  ce fichier permet la construction de la vue dans le navigateur avec la mise en place d'un Router  
+            =>" npm install react-router-dom " 
+            => import {Route, BrowserRouter as Router} from "react-router-dom";
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+            => utilise aussi Components/Navigation et Components/CdvComponent
+                * pour la navbar presente dans chaque vue et le texte en pied de page.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+            j'ai mis en place 5 chemins en fonction de l'action de l'utilisateur
 
-### `yarn test`
+### Components/SearchView - path="/"
+    * ce que l'on voit quand on arrive sur l'application 
+    * le formulaire permet de recuperer les informations  d'aeroport de depart et d'arriver ainsi que les dates et le nombre de passager dans le but de les stoquers dans le localStorage du navigateur sous le nom "recherche" une fois le formulaire valider.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### Components/ResultView - path="/result"
+    * cette vue permet de choisir l'heure de l'aller et du retour ainsi que le prix
+    * une fois le fomulaire valider dans la 3ème tab les infos sont stoqués dans 
+        localStorage sous le nom de "choix"
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Components/ReservationView - path="/reservation"
+    *  cette vue resume la reservation de biller avec toutes les infos.
+    *  permet aussi de pourvoir annuler les billets ce qui va purger les infos dans le localeStorage et renvoyer au formulaire de recherche
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Components/ProfileView - path="/profile"
+    * vue d'ensemble utilisateur avec divers infos et modif setting en vue du portage mobile
+    *  Avec un bouton qui permet d'accédés a la reservation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Components/AlertPopUp - path="/popup"
+    * ecran de confirmation  de paiment et renvoie vers la page de reservation
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+        
